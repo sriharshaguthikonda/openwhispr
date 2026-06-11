@@ -172,7 +172,10 @@
       "welcome": "Welcome",
       "setup": "Setup",
       "permissions": "Permissions",
-      "activation": "Activation"
+      "activation": "Activation",
+      "useCase": "About you",
+      "meeting": "Meetings",
+      "finish": "Finish"
     },
     "hotkey": {
       "couldNotRegisterTitle": "Couldn't register that hotkey",
@@ -186,17 +189,17 @@
     "permissions": {
       "title": "Permissions",
       "microphoneTitle": "Microphone",
-      "microphoneDescription": "Captures your voice for transcription",
+      "microphoneDescription": "Turns your speech into text. Nothing is recorded until you press your hotkey.",
       "grant": "Grant",
       "grantAccess": "Grant Access",
       "accessibilityTitle": "Accessibility",
-      "accessibilityDescription": "Allows auto-pasting transcribed text into any app",
+      "accessibilityDescription": "Types the finished text straight into whatever app you're in — docs, email, chat.",
       "testAndGrant": "Test & Grant",
       "requiredForApp": "Required for OpenWhispr to work",
       "microphoneRequired": "Microphone access required",
       "openSystemSettings": "Open System Settings",
       "systemAudioTitle": "System Audio",
-      "systemAudioDescription": "Transcribe meetings, calls, lectures, podcasts, and other system audio.",
+      "systemAudioDescription": "Lets the meeting recorder hear the other side of your calls — meetings, lectures, podcasts. You can turn this on later in Settings.",
       "optional": "Optional",
       "recommended": "Recommended",
       "accessibilityTroubleshooting": "In System Settings → Accessibility, switch OpenWhispr's toggle off and back on. If that doesn't work, remove OpenWhispr from the list and add it back. Still stuck? Email support@openwhispr.com."
@@ -223,6 +226,57 @@
       "body": "{{cause}} You can switch to the local engine, or continue and try again later.",
       "useLocal": "Use local engine",
       "continue": "Continue anyway"
+    },
+    "useCase": {
+      "title": "Why are you here?",
+      "description": "We're a small team shipping improvements every week. Telling us what you came for helps us set OpenWhispr up properly for you.",
+      "noteLabel": "Anything else you'd like us to know?",
+      "notePlaceholder": "Optional — e.g. “I dictate radiology reports” or “I write a lot of emails”",
+      "options": {
+        "dictation": {
+          "title": "Writing faster",
+          "description": "Dictate into any app instead of typing"
+        },
+        "meetings": {
+          "title": "Meeting notes & summaries",
+          "description": "Record, transcribe and summarize meetings"
+        },
+        "medical": {
+          "title": "Medical transcription",
+          "description": "Clinical dictation and documentation"
+        },
+        "translation": {
+          "title": "Translating languages",
+          "description": "Speak one language, type another"
+        },
+        "ai": {
+          "title": "Talking to my AI",
+          "description": "Voice-drive ChatGPT, Claude and other agents"
+        }
+      }
+    },
+    "meeting": {
+      "title": "Meeting notes",
+      "description": "Capture and summarize your meetings",
+      "autoDetect": "OpenWhispr automatically detects when you're in a meeting and offers to start notes — nothing is recorded without you.",
+      "hotkeyLabel": "Meeting hotkey",
+      "hotkeyHint": "Optional — press it in any meeting to start a note instantly."
+    },
+    "finish": {
+      "title": "You're all set",
+      "cloudDescription": "You're on OpenWhispr Cloud — fast, accurate, zero data retention, 2,000 words free every week. Prefer everything on-device? Switch to local processing in Settings.",
+      "localDescription": "You're set up with local processing or your own key. Adjust how your audio is processed anytime in Settings.",
+      "cleanupNote": "AI text cleanup runs with sensible defaults. You can adjust it anytime in Settings.",
+      "openSettings": "Open Settings",
+      "skipForNow": "Skip for now",
+      "corti": {
+        "title": "You chose medical transcription",
+        "description": "We've partnered with Corti — clinical-grade speech-to-text with the highest accuracy on medical dictation benchmarks.",
+        "credit": "Create a Corti account and you'll get $50 in free credits. Then add your Corti credentials in Settings and OpenWhispr will transcribe through Corti.",
+        "createAccount": "Create your Corti account",
+        "skip": "Not now",
+        "setUp": "Set up in Settings"
+      }
     }
   },
   "streaming": {

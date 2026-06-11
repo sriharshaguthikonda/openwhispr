@@ -172,7 +172,10 @@
       "welcome": "Bienvenido",
       "setup": "Configuración",
       "permissions": "Permisos",
-      "activation": "Activación"
+      "activation": "Activación",
+      "useCase": "Sobre ti",
+      "meeting": "Reuniones",
+      "finish": "Listo"
     },
     "hotkey": {
       "couldNotRegisterTitle": "No se pudo registrar ese atajo",
@@ -186,17 +189,17 @@
     "permissions": {
       "title": "Permisos",
       "microphoneTitle": "Micrófono",
-      "microphoneDescription": "Captura tu voz para la transcripción",
+      "microphoneDescription": "Convierte tu voz en texto. No se graba nada hasta que pulsas tu atajo.",
       "grant": "Conceder",
       "grantAccess": "Conceder acceso",
       "accessibilityTitle": "Accesibilidad",
-      "accessibilityDescription": "Permite pegar automáticamente el texto transcrito en cualquier aplicación",
+      "accessibilityDescription": "Escribe el texto final directamente en la aplicación que estés usando: documentos, correo, chat.",
       "testAndGrant": "Probar y conceder",
       "requiredForApp": "Necesario para que OpenWhispr funcione",
       "microphoneRequired": "Se requiere acceso al micrófono",
       "openSystemSettings": "Abrir Ajustes del Sistema",
       "systemAudioTitle": "Audio del Sistema",
-      "systemAudioDescription": "Transcribe reuniones, llamadas, clases, podcasts y otros audios del sistema.",
+      "systemAudioDescription": "Permite que el grabador de reuniones escuche al resto de participantes de tus llamadas: reuniones, clases, pódcasts. Puedes activarlo más tarde en Ajustes.",
       "optional": "Opcional",
       "recommended": "Recomendado",
       "accessibilityTroubleshooting": "En Configuración del Sistema → Accesibilidad, desactiva el interruptor de OpenWhispr y vuelve a activarlo. Si eso no funciona, elimina OpenWhispr de la lista y añádelo de nuevo. ¿Sigues con problemas? Escribe a support@openwhispr.com."
@@ -223,6 +226,57 @@
       "body": "{{cause}} Puedes cambiar al motor local o continuar e intentarlo más tarde.",
       "useLocal": "Usar motor local",
       "continue": "Continuar de todos modos"
+    },
+    "useCase": {
+      "title": "¿Qué te trae por aquí?",
+      "description": "Somos un equipo pequeño que lanza mejoras cada semana. Saber a qué vienes nos ayuda a configurar OpenWhispr a tu medida.",
+      "noteLabel": "¿Algo más que quieras contarnos?",
+      "notePlaceholder": "Opcional — p. ej. «Dicto informes de radiología» o «Escribo muchos correos»",
+      "options": {
+        "dictation": {
+          "title": "Escribir más rápido",
+          "description": "Dicta en cualquier aplicación en lugar de teclear"
+        },
+        "meetings": {
+          "title": "Notas y resúmenes de reuniones",
+          "description": "Graba, transcribe y resume tus reuniones"
+        },
+        "medical": {
+          "title": "Transcripción médica",
+          "description": "Dictado clínico y documentación"
+        },
+        "translation": {
+          "title": "Traducir idiomas",
+          "description": "Habla un idioma, escribe en otro"
+        },
+        "ai": {
+          "title": "Hablar con mi IA",
+          "description": "Controla por voz ChatGPT, Claude y otros agentes"
+        }
+      }
+    },
+    "meeting": {
+      "title": "Notas de reuniones",
+      "description": "Captura y resume tus reuniones",
+      "autoDetect": "OpenWhispr detecta automáticamente cuando estás en una reunión y te ofrece iniciar notas; no se graba nada sin tu permiso.",
+      "hotkeyLabel": "Atajo de reunión",
+      "hotkeyHint": "Opcional: púlsalo en cualquier reunión para iniciar una nota al instante."
+    },
+    "finish": {
+      "title": "Todo listo",
+      "cloudDescription": "Estás en OpenWhispr Cloud: rápido, preciso, sin retención de datos y con 2.000 palabras gratis a la semana. ¿Prefieres que todo quede en tu equipo? Cambia al procesamiento local en Ajustes.",
+      "localDescription": "Has configurado el procesamiento local o tu propia clave. Ajusta cómo se procesa tu audio cuando quieras en Ajustes.",
+      "cleanupNote": "La limpieza de texto con IA funciona con valores predeterminados razonables. Puedes ajustarla en Ajustes.",
+      "openSettings": "Abrir Ajustes",
+      "skipForNow": "Omitir por ahora",
+      "corti": {
+        "title": "Elegiste transcripción médica",
+        "description": "Nos hemos asociado con Corti: voz a texto de nivel clínico con la mayor precisión en dictado médico.",
+        "credit": "Crea una cuenta de Corti y recibirás 50 $ en créditos gratis. Después añade tus credenciales de Corti en Ajustes y OpenWhispr transcribirá a través de Corti.",
+        "createAccount": "Crear tu cuenta de Corti",
+        "skip": "Ahora no",
+        "setUp": "Configurar en Ajustes"
+      }
     }
   },
   "streaming": {

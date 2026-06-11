@@ -172,7 +172,10 @@
       "welcome": "ようこそ",
       "setup": "セットアップ",
       "permissions": "権限",
-      "activation": "アクティベーション"
+      "activation": "アクティベーション",
+      "useCase": "あなたについて",
+      "meeting": "会議",
+      "finish": "完了"
     },
     "hotkey": {
       "couldNotRegisterTitle": "ホットキーを登録できませんでした",
@@ -186,17 +189,17 @@
     "permissions": {
       "title": "権限",
       "microphoneTitle": "マイク",
-      "microphoneDescription": "文字起こしのためにあなたの声を録音します",
+      "microphoneDescription": "あなたの声をテキストに変換します。ホットキーを押すまで何も録音されません。",
       "grant": "許可",
       "grantAccess": "アクセスを許可",
       "accessibilityTitle": "アクセシビリティ",
-      "accessibilityDescription": "文字起こしテキストを任意のアプリに自動貼り付けします",
+      "accessibilityDescription": "完成したテキストを、今使っているアプリ（ドキュメント、メール、チャット）に直接入力します。",
       "testAndGrant": "テストして許可",
       "requiredForApp": "OpenWhispr の動作に必要です",
       "microphoneRequired": "マイクへのアクセスが必要です",
       "openSystemSettings": "システム設定を開く",
       "systemAudioTitle": "システムオーディオ",
-      "systemAudioDescription": "会議、通話、講義、ポッドキャストなど、システム音声を文字起こしします。",
+      "systemAudioDescription": "会議レコーダーが通話の相手側の音声（会議、講義、ポッドキャストなど）を聴けるようにします。後から設定で有効にできます。",
       "optional": "任意",
       "recommended": "推奨",
       "accessibilityTroubleshooting": "システム設定 → アクセシビリティで、OpenWhisprのスイッチをオフにしてから再度オンにしてください。それでもうまくいかない場合は、リストからOpenWhisprを削除して再度追加してみてください。それでも解決しませんか？support@openwhispr.com までメールでお問い合わせください。"
@@ -223,6 +226,57 @@
       "body": "{{cause}} ローカルエンジンに切り替えるか、続行して後でもう一度お試しください。",
       "useLocal": "ローカルエンジンを使う",
       "continue": "そのまま続行"
+    },
+    "useCase": {
+      "title": "どんな目的でお使いですか？",
+      "description": "私たちは小さなチームで、毎週改善を重ねています。ご利用の目的を教えていただければ、OpenWhispr をあなたに合わせて最適に設定できます。",
+      "noteLabel": "他に伝えておきたいことはありますか？",
+      "notePlaceholder": "任意 — 例：「放射線レポートを口述します」「メールをたくさん書きます」",
+      "options": {
+        "dictation": {
+          "title": "より速く書く",
+          "description": "タイピングの代わりにどのアプリでも音声入力"
+        },
+        "meetings": {
+          "title": "会議のメモと要約",
+          "description": "会議を録音・文字起こし・要約"
+        },
+        "medical": {
+          "title": "医療文字起こし",
+          "description": "臨床ディクテーションとドキュメンテーション"
+        },
+        "translation": {
+          "title": "言語の翻訳",
+          "description": "話す言語とは別の言語で入力"
+        },
+        "ai": {
+          "title": "AI との対話",
+          "description": "ChatGPT、Claude などのエージェントを声で操作"
+        }
+      }
+    },
+    "meeting": {
+      "title": "会議メモ",
+      "description": "会議を記録して要約します",
+      "autoDetect": "OpenWhispr は会議中であることを自動的に検出し、メモの開始を提案します。あなたの操作なしに録音されることはありません。",
+      "hotkeyLabel": "会議ホットキー",
+      "hotkeyHint": "任意 — 会議中に押すとすぐにメモを開始できます。"
+    },
+    "finish": {
+      "title": "準備完了",
+      "cloudDescription": "OpenWhispr Cloud をご利用中です — 高速・高精度、データ保持なし、毎週 2,000 ワード無料。すべてを端末内で処理したい場合は、設定からローカル処理に切り替えられます。",
+      "localDescription": "ローカル処理またはご自身の API キーで設定済みです。音声の処理方法はいつでも設定から変更できます。",
+      "cleanupNote": "AI によるテキスト整形は適切な初期設定で動作します。設定からいつでも調整できます。",
+      "openSettings": "設定を開く",
+      "skipForNow": "今はスキップ",
+      "corti": {
+        "title": "医療文字起こしを選択されました",
+        "description": "私たちは Corti と提携しています — 医療ディクテーションで最高精度の臨床グレード音声認識です。",
+        "credit": "Corti アカウントを作成すると 50 ドル分の無料クレジットがもらえます。その後、設定で Corti の認証情報を追加すると、OpenWhispr は Corti 経由で文字起こしを行います。",
+        "createAccount": "Corti アカウントを作成",
+        "skip": "後で",
+        "setUp": "設定でセットアップ"
+      }
     }
   },
   "streaming": {
