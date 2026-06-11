@@ -773,7 +773,8 @@
     "resendIn": "Reinvia tra {{seconds}}s",
     "verifiedDescription": "Il tuo account è pronto.",
     "verifiedTitle": "E-mail verificata",
-    "waiting": "In attesa della verifica..."
+    "waiting": "In attesa della verifica...",
+    "backToSignIn": "Torna all'accesso"
   },
   "errorBoundary": {
     "description": "Si è verificato un errore imprevisto. Ricarica per riprovare.",

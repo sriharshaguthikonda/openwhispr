@@ -773,7 +773,8 @@
     "resendIn": "Erneut senden in {{seconds}}s",
     "verifiedDescription": "Ihr Konto ist eingerichtet.",
     "verifiedTitle": "E-Mail bestätigt",
-    "waiting": "Warte auf Bestätigung..."
+    "waiting": "Warte auf Bestätigung...",
+    "backToSignIn": "Zurück zur Anmeldung"
   },
   "errorBoundary": {
     "description": "Ein unerwarteter Fehler ist aufgetreten. Bitte laden Sie die Seite neu.",

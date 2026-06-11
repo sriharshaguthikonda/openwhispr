@@ -821,7 +821,8 @@
     "resendIn": "Renvoyer dans {{seconds}}s",
     "verifiedDescription": "Votre compte est prêt.",
     "verifiedTitle": "E-mail vérifié",
-    "waiting": "En attente de la vérification..."
+    "waiting": "En attente de la vérification...",
+    "backToSignIn": "Retour à la connexion"
   },
   "errorBoundary": {
     "description": "Une erreur inattendue s'est produite. Veuillez recharger pour réessayer.",

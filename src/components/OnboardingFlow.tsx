@@ -488,6 +488,7 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
                 setPendingVerificationEmail(null);
                 nextStep();
               }}
+              onBack={() => setPendingVerificationEmail(null)}
             />
           );
         }

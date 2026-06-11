@@ -869,7 +869,8 @@
     "resendIn": "Resend in {{seconds}}s",
     "verifiedDescription": "Your account is all set.",
     "verifiedTitle": "Email verified",
-    "waiting": "Waiting for verification..."
+    "waiting": "Waiting for verification...",
+    "backToSignIn": "Back to sign in"
   },
   "errorBoundary": {
     "description": "An unexpected error occurred. Please reload to try again.",

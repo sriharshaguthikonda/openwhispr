@@ -773,7 +773,8 @@
     "resendIn": "{{seconds}} 秒後可重新寄送",
     "verifiedDescription": "你的帳號已設定完成。",
     "verifiedTitle": "電子郵件已驗證",
-    "waiting": "等待驗證中..."
+    "waiting": "等待驗證中...",
+    "backToSignIn": "返回登入"
   },
   "errorBoundary": {
     "description": "發生意外錯誤。請重新載入後再試。",
@@ -1126,7 +1127,12 @@
           "annualEquivalent": "$16.67",
           "includesPrefix": "所有 Pro 功能 +",
           "badge": "最熱門",
-          "features": ["無限會議錄製", "代理模式", "與您的資料對話", "優先支援"],
+          "features": [
+            "無限會議錄製",
+            "代理模式",
+            "與您的資料對話",
+            "優先支援"
+          ],
           "cta": "開始使用",
           "switchToAnnual": "切換為年付"
         },

@@ -821,7 +821,8 @@
     "resendIn": "Reenviar en {{seconds}}s",
     "verifiedDescription": "Tu cuenta está lista.",
     "verifiedTitle": "Correo verificado",
-    "waiting": "Esperando verificación..."
+    "waiting": "Esperando verificación...",
+    "backToSignIn": "Volver a iniciar sesión"
   },
   "errorBoundary": {
     "description": "Ocurrió un error inesperado. Recarga para intentar de nuevo.",

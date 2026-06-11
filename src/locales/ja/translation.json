@@ -773,7 +773,8 @@
     "resendIn": "{{seconds}} 秒後に再送信可能",
     "verifiedDescription": "アカウントの設定が完了しました。",
     "verifiedTitle": "メール確認完了",
-    "waiting": "確認を待っています..."
+    "waiting": "確認を待っています...",
+    "backToSignIn": "サインインに戻る"
   },
   "errorBoundary": {
     "description": "予期しないエラーが発生しました。再読み込みしてもう一度お試しください。",
