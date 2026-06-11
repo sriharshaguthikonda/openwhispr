@@ -271,12 +271,13 @@
       "openSettings": "Open Settings",
       "skipForNow": "Skip for now",
       "corti": {
-        "title": "You chose healthcare transcription",
-        "description": "We've partnered with Corti — clinical-grade speech-to-text with the highest accuracy on medical dictation benchmarks.",
-        "credit": "Create a Corti account and you'll get $50 in free credits. Then add your Corti credentials in Settings and OpenWhispr will transcribe through Corti.",
+        "title": "You told us you're here for clinical transcription",
+        "description": "We've partnered with Corti — clinical-grade speech-to-text with the highest accuracy, and it's HIPAA compliant.",
         "createAccount": "Create your Corti account",
-        "skip": "Not now",
-        "setUp": "Set up in Settings"
+        "creditBadge": "$50 free credit",
+        "regionHint": "Choose where your audio is processed — US or EU.",
+        "useCorti": "Use Corti",
+        "skip": "Not now"
       }
     }
   },

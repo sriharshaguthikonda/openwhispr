@@ -271,12 +271,13 @@
       "openSettings": "開啟設定",
       "skipForNow": "暫時略過",
       "corti": {
-        "title": "你選擇了醫療健康轉寫",
-        "description": "我們與 Corti 合作 — 臨床級語音轉文字，在醫療口述基準中準確率最高。",
-        "credit": "註冊 Corti 帳戶即可獲得 50 美元免費額度。然後在「設定」中加入你的 Corti 憑證，OpenWhispr 將透過 Corti 進行轉寫。",
+        "title": "你告訴我們你是為臨床轉寫而來",
+        "description": "我們與 Corti 合作 — 臨床級語音轉文字，準確率最高，並符合 HIPAA。",
         "createAccount": "建立你的 Corti 帳戶",
-        "skip": "暫時不用",
-        "setUp": "在設定中設定"
+        "creditBadge": "50 美元免費額度",
+        "regionHint": "選擇音訊處理地區 — 美國或歐盟。",
+        "useCorti": "使用 Corti",
+        "skip": "暫時不用"
       }
     }
   },

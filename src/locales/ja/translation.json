@@ -271,12 +271,13 @@
       "openSettings": "設定を開く",
       "skipForNow": "今はスキップ",
       "corti": {
-        "title": "医療系の文字起こしを選択されました",
-        "description": "私たちは Corti と提携しています — 医療ディクテーションで最高精度の臨床グレード音声認識です。",
-        "credit": "Corti アカウントを作成すると 50 ドル分の無料クレジットがもらえます。その後、設定で Corti の認証情報を追加すると、OpenWhispr は Corti 経由で文字起こしを行います。",
+        "title": "臨床文字起こしが目的とのことですね",
+        "description": "私たちは Corti と提携しています — 最高精度の臨床グレード音声認識で、HIPAA に準拠しています。",
         "createAccount": "Corti アカウントを作成",
-        "skip": "後で",
-        "setUp": "設定でセットアップ"
+        "creditBadge": "50ドルの無料クレジット",
+        "regionHint": "音声の処理場所を選べます — 米国または EU。",
+        "useCorti": "Corti を使う",
+        "skip": "後で"
       }
     }
   },

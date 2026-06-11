@@ -2,8 +2,11 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Check, ExternalLink, Settings, Stethoscope } from "lucide-react";
 import { Button } from "../ui/button";
+import ApiKeyInput from "../ui/ApiKeyInput";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { getTranscriptionProviders } from "../../models/ModelRegistry";
 import { useSettings } from "../../hooks/useSettings";
+import { useSettingsStore } from "../../stores/settingsStore";
 import { USE_CASE_IDS } from "./useCases";
 
 const CORTI_CONSOLE_URL = "https://console.corti.app";
@@ -23,13 +26,31 @@ export default function FinishStep({
 }: FinishStepProps) {
   const { t } = useTranslation();
   const { updateTranscriptionSettings } = useSettings();
+  const cortiClientId = useSettingsStore((s) => s.cortiClientId);
+  const setCortiClientId = useSettingsStore((s) => s.setCortiClientId);
+  const cortiClientSecret = useSettingsStore((s) => s.cortiClientSecret);
+  const setCortiClientSecret = useSettingsStore((s) => s.setCortiClientSecret);
+  const cortiEnvironment = useSettingsStore((s) => s.cortiEnvironment);
+  const setCortiEnvironment = useSettingsStore((s) => s.setCortiEnvironment);
 
   // The Corti pitch only renders once the Corti provider ships in the model
   // registry (separate PR) — until then healthcare users see the default finish.
-  const cortiAvailable = getTranscriptionProviders().some((p) => p.id === "corti");
+  const cortiProvider = getTranscriptionProviders().find((p) => p.id === "corti");
   const [showCorti, setShowCorti] = useState(
-    cortiAvailable && useCases.includes(USE_CASE_IDS.healthcare)
+    !!cortiProvider && useCases.includes(USE_CASE_IDS.healthcare)
   );
+  const hasCortiCredentials =
+    cortiClientId.trim().length > 0 && cortiClientSecret.trim().length > 0;
+
+  const startWithCorti = () => {
+    updateTranscriptionSettings({
+      useLocalWhisper: false,
+      cloudTranscriptionMode: "byok",
+      cloudTranscriptionProvider: "corti",
+      cloudTranscriptionModel: cortiProvider?.models[0]?.id,
+    });
+    onFinish(false);
+  };
 
   if (showCorti) {
     return (
@@ -46,17 +67,54 @@ export default function FinishStep({
           </p>
         </div>
 
-        <div className="rounded-md border border-border bg-surface-1 p-3 space-y-2">
-          <p className="text-xs text-muted-foreground leading-snug">
-            {t("onboarding.finish.corti.credit")}
-          </p>
+        <div className="flex items-center justify-between gap-3 rounded-md border border-border bg-surface-1 p-3">
           <button
             onClick={() => window.electronAPI?.openExternal?.(CORTI_CONSOLE_URL)}
-            className="inline-flex items-center gap-1 text-xs text-link hover:underline"
+            className="inline-flex items-center gap-1 text-xs font-medium text-link hover:underline"
           >
             {t("onboarding.finish.corti.createAccount")}
             <ExternalLink className="w-3 h-3" />
           </button>
+          <span className="inline-flex items-center px-2 py-0.5 text-[11px] font-medium rounded bg-success/10 text-success shrink-0">
+            {t("onboarding.finish.corti.creditBadge")}
+          </span>
+        </div>
+
+        <div className="space-y-2">
+          <div className="space-y-1.5">
+            <label className="text-xs font-medium text-foreground">
+              {t("transcription.corti.clientId")}
+            </label>
+            <ApiKeyInput apiKey={cortiClientId} setApiKey={setCortiClientId} label="" helpText="" />
+          </div>
+          <div className="space-y-1.5">
+            <label className="text-xs font-medium text-foreground">
+              {t("transcription.corti.clientSecret")}
+            </label>
+            <ApiKeyInput
+              apiKey={cortiClientSecret}
+              setApiKey={setCortiClientSecret}
+              label=""
+              helpText=""
+            />
+          </div>
+          <div className="space-y-1.5">
+            <label className="text-xs font-medium text-foreground">
+              {t("transcription.corti.environment")}
+            </label>
+            <Select value={cortiEnvironment} onValueChange={setCortiEnvironment}>
+              <SelectTrigger className="h-8 text-sm">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="us">US</SelectItem>
+                <SelectItem value="eu">EU</SelectItem>
+              </SelectContent>
+            </Select>
+            <p className="text-xs text-muted-foreground/70">
+              {t("onboarding.finish.corti.regionHint")}
+            </p>
+          </div>
         </div>
 
         <div className="flex items-center justify-center gap-2">
@@ -69,15 +127,12 @@ export default function FinishStep({
             {t("onboarding.finish.corti.skip")}
           </Button>
           <Button
-            onClick={() => {
-              updateTranscriptionSettings({ cloudTranscriptionProvider: "corti" });
-              onFinish(true);
-            }}
-            disabled={isFinishing}
+            onClick={startWithCorti}
+            disabled={isFinishing || !hasCortiCredentials}
             className="h-8 px-6 rounded-full text-xs"
           >
-            <Settings className="w-3.5 h-3.5" />
-            {t("onboarding.finish.corti.setUp")}
+            <Check className="w-3.5 h-3.5" />
+            {t("onboarding.finish.corti.useCorti")}
           </Button>
         </div>
       </div>

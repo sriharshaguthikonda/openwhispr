@@ -271,12 +271,13 @@
       "openSettings": "Abrir Ajustes",
       "skipForNow": "Omitir por ahora",
       "corti": {
-        "title": "Elegiste transcripción sanitaria",
-        "description": "Nos hemos asociado con Corti: voz a texto de nivel clínico con la mayor precisión en dictado médico.",
-        "credit": "Crea una cuenta de Corti y recibirás 50 $ en créditos gratis. Después añade tus credenciales de Corti en Ajustes y OpenWhispr transcribirá a través de Corti.",
-        "createAccount": "Crear tu cuenta de Corti",
-        "skip": "Ahora no",
-        "setUp": "Configurar en Ajustes"
+        "title": "Nos dijiste que vienes por la transcripción clínica",
+        "description": "Nos hemos asociado con Corti: voz a texto de nivel clínico con la máxima precisión y conforme a la HIPAA.",
+        "createAccount": "Crea tu cuenta de Corti",
+        "creditBadge": "50 $ de crédito gratis",
+        "regionHint": "Elige dónde se procesa tu audio: EE. UU. o UE.",
+        "useCorti": "Usar Corti",
+        "skip": "Ahora no"
       }
     }
   },

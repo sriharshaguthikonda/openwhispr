@@ -271,12 +271,13 @@
       "openSettings": "Apri Impostazioni",
       "skipForNow": "Salta per ora",
       "corti": {
-        "title": "Hai scelto la trascrizione sanitaria",
-        "description": "Siamo partner di Corti: riconoscimento vocale di livello clinico con la massima accuratezza nella dettatura medica.",
-        "credit": "Crea un account Corti e riceverai 50 $ di crediti gratuiti. Poi aggiungi le tue credenziali Corti nelle Impostazioni e OpenWhispr trascriverà tramite Corti.",
+        "title": "Ci hai detto che sei qui per la trascrizione clinica",
+        "description": "Siamo partner di Corti — riconoscimento vocale di livello clinico con la massima accuratezza, conforme alla HIPAA.",
         "createAccount": "Crea il tuo account Corti",
-        "skip": "Non ora",
-        "setUp": "Configura nelle Impostazioni"
+        "creditBadge": "50 $ di credito gratuito",
+        "regionHint": "Scegli dove elaborare il tuo audio — USA o UE.",
+        "useCorti": "Usa Corti",
+        "skip": "Non ora"
       }
     }
   },
