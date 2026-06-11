@@ -152,13 +152,15 @@ export default function EmailVerificationStep({
         )}
       </Button>
 
-      <button
+      <Button
         type="button"
+        variant="ghost"
+        size="sm"
         onClick={onBack}
-        className="w-full text-center text-xs text-muted-foreground/85 hover:text-foreground transition-colors py-1.5 rounded hover:bg-muted/30"
+        className="w-full font-normal text-muted-foreground/85 hover:text-foreground hover:bg-muted/30"
       >
         {t("emailVerification.backToSignIn")}
-      </button>
+      </Button>
     </div>
   );
 }
