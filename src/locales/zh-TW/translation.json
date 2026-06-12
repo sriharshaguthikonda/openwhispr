@@ -223,7 +223,7 @@
       "title": "語音助手快捷鍵",
       "description": "一鍵喚起你的 AI 助手",
       "hotkey": "快捷鍵",
-      "howItWorks": "使用此快捷鍵開始的語音輸入會作為指令直接傳送給 {{agentName}}——無需喚醒詞，並跳過文字整理。",
+      "howItWorks": "按下快捷鍵，說出你想要的內容，例如「寫一段簡短的感謝語」。{{agentName}} 會把結果輸入到游標所在的位置。無需先說「Hey {{agentName}}」。",
       "optionalNote": "選用——你可以隨時在設定中新增或修改。"
     },
     "connectivity": {
@@ -1304,7 +1304,7 @@
       },
       "voiceAgentHotkey": {
         "title": "語音助手快捷鍵",
-        "description": "開始一段直接傳送給 AI 助手的語音輸入，跳過文字整理"
+        "description": "說出你的需求，AI 助手會輸入結果，而不是你說的原話"
       },
       "microphone": {
         "description": "選擇用於語音輸入的輸入裝置",
@@ -2360,8 +2360,8 @@
   },
   "agentMode": {
     "settings": {
-      "hotkey": "助手熱鍵",
-      "hotkeyDescription": "切換助手覆蓋層的熱鍵",
+      "hotkey": "聊天助手快捷鍵",
+      "hotkeyDescription": "開啟或關閉聊天助手視窗",
       "model": "助手模型",
       "modelDescription": "用於助手對話的AI模型",
       "systemPrompt": "系統提示詞",

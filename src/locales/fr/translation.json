@@ -223,7 +223,7 @@
       "title": "Raccourci de l'agent vocal",
       "description": "Parlez à votre agent IA d'une simple touche",
       "hotkey": "Raccourci",
-      "howItWorks": "La dictée lancée avec ce raccourci est envoyée directement à {{agentName}} comme instruction — aucun mot d'activation requis, et le nettoyage du texte est ignoré.",
+      "howItWorks": "Appuyez sur la touche et dites ce que vous voulez, par exemple « écris un petit mot de remerciement ». {{agentName}} écrit le résultat là où se trouve votre curseur. Pas besoin de dire « Hey {{agentName}} » d'abord.",
       "optionalNote": "Facultatif — vous pouvez le définir ou le modifier à tout moment dans les réglages."
     },
     "connectivity": {
@@ -1357,7 +1357,7 @@
       },
       "voiceAgentHotkey": {
         "title": "Raccourci de l'agent vocal",
-        "description": "Lance une dictée envoyée directement à votre agent IA, sans nettoyage du texte"
+        "description": "Dites ce que vous voulez — votre agent IA écrit le résultat, pas vos mots"
       },
       "microphone": {
         "description": "Sélectionnez le périphérique d'entrée à utiliser pour la dictée",
@@ -2413,8 +2413,8 @@
   },
   "agentMode": {
     "settings": {
-      "hotkey": "Raccourci Agent",
-      "hotkeyDescription": "Raccourci clavier pour basculer la fenêtre agent",
+      "hotkey": "Raccourci de l'agent de chat",
+      "hotkeyDescription": "Affiche ou masque la fenêtre de l'agent de chat",
       "model": "Modèle Agent",
       "modelDescription": "Modèle IA utilisé pour les conversations agent",
       "systemPrompt": "Prompt système",

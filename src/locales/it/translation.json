@@ -223,7 +223,7 @@
       "title": "Scorciatoia dell'agente vocale",
       "description": "Parla con il tuo agente IA con un solo tasto",
       "hotkey": "Scorciatoia",
-      "howItWorks": "La dettatura avviata con questa scorciatoia viene inviata direttamente a {{agentName}} come istruzione: non serve pronunciare il nome e la correzione del testo viene saltata.",
+      "howItWorks": "Premi il tasto e di' cosa vuoi — ad esempio “scrivi un breve messaggio di ringraziamento”. {{agentName}} scrive il risultato dove si trova il cursore. Non serve dire prima “Hey {{agentName}}”.",
       "optionalNote": "Facoltativo — puoi impostarla o modificarla in qualsiasi momento nelle impostazioni."
     },
     "connectivity": {
@@ -1309,7 +1309,7 @@
       },
       "voiceAgentHotkey": {
         "title": "Scorciatoia dell'agente vocale",
-        "description": "Avvia una dettatura inviata direttamente al tuo agente IA, saltando la correzione del testo"
+        "description": "Di' cosa ti serve — il tuo agente IA scrive il risultato, non le tue parole"
       },
       "microphone": {
         "description": "Seleziona il dispositivo di ingresso da usare per la dettatura",
@@ -2365,8 +2365,8 @@
   },
   "agentMode": {
     "settings": {
-      "hotkey": "Tasto Agente",
-      "hotkeyDescription": "Tasto di scelta rapida per alternare l'overlay agente",
+      "hotkey": "Scorciatoia dell'agente chat",
+      "hotkeyDescription": "Apre e chiude l'overlay dell'agente chat",
       "model": "Modello Agente",
       "modelDescription": "Modello IA utilizzato per le conversazioni agente",
       "systemPrompt": "Prompt di Sistema",

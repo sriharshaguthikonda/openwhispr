@@ -1,10 +1,6 @@
-// Decides which reasoning path a finished dictation takes:
-// - "agent": send the transcript to the dictation agent as a command
-// - "cleanup": send the transcript to the cleanup model
-// - "skip": return the raw transcript untouched
-//
-// A recording started via the voice agent hotkey forces the agent path —
-// no wake word needed — and never falls back to cleanup.
+// Decides which reasoning path ("agent" | "cleanup" | "skip") a finished
+// dictation takes. A recording started via the voice agent hotkey always takes
+// the agent path — no wake word needed — and never falls back to cleanup.
 export function resolveDictationRouteKind({
   cleanupReachable,
   agentReachable,

@@ -475,8 +475,7 @@ export function HotkeyInput({
   const isGlobe = isGlobeLikeHotkey(value);
   const hotkeyParts = value?.includes("+") ? displayValue.split("+") : [];
 
-  // Revealed on hover. mousedown is prevented so clicking never focuses the
-  // container and starts capture.
+  // mousedown is prevented so clicking never focuses the container and starts capture
   const clearButton =
     onClear && value && !isCapturing && !disabled ? (
       <button

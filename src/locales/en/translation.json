@@ -223,7 +223,7 @@
       "title": "Voice Agent Hotkey",
       "description": "Talk to your AI agent with a single keypress",
       "hotkey": "Hotkey",
-      "howItWorks": "Dictation started with this hotkey goes straight to {{agentName}} as a command — no wake word needed, and text cleanup is skipped.",
+      "howItWorks": "Press the key and say what you want — for example “write a short thank-you note”. {{agentName}} types the result wherever your cursor is. No need to say “Hey {{agentName}}” first.",
       "optionalNote": "Optional — you can set or change it anytime in Settings."
     },
     "connectivity": {
@@ -1490,7 +1490,7 @@
       },
       "voiceAgentHotkey": {
         "title": "Voice Agent Hotkey",
-        "description": "Start a dictation that goes straight to your AI agent, skipping text cleanup"
+        "description": "Speak a request — your AI agent types the result, not your words"
       },
       "microphone": {
         "description": "Select which input device to use for dictation",
@@ -2509,8 +2509,8 @@
   },
   "agentMode": {
     "settings": {
-      "hotkey": "Agent Hotkey",
-      "hotkeyDescription": "Hotkey to toggle the agent overlay",
+      "hotkey": "Chat Agent Hotkey",
+      "hotkeyDescription": "Open and close the chat agent overlay",
       "model": "Agent Model",
       "modelDescription": "AI model used for agent conversations",
       "systemPrompt": "System Prompt",

@@ -195,7 +195,7 @@
       "title": "Atalho do agente de voz",
       "description": "Fale com seu agente de IA com um único atalho",
       "hotkey": "Atalho",
-      "howItWorks": "O ditado iniciado com este atalho é enviado diretamente para {{agentName}} como instrução: não é preciso dizer o nome e a limpeza de texto é ignorada.",
+      "howItWorks": "Pressione a tecla e diga o que quer — por exemplo, “escreva uma breve nota de agradecimento”. {{agentName}} escreve o resultado onde estiver o cursor. Não precisa dizer “Hey {{agentName}}” antes.",
       "optionalNote": "Opcional — você pode definir ou alterar a qualquer momento nas configurações."
     },
     "connectivity": {
@@ -1281,7 +1281,7 @@
       },
       "voiceAgentHotkey": {
         "title": "Atalho do agente de voz",
-        "description": "Inicia um ditado que vai direto para seu agente de IA, ignorando a limpeza de texto"
+        "description": "Diga o que você precisa — seu agente de IA escreve o resultado, não suas palavras"
       },
       "microphone": {
         "description": "Selecione qual dispositivo de entrada usar para ditado",
@@ -2365,8 +2365,8 @@
   },
   "agentMode": {
     "settings": {
-      "hotkey": "Tecla do Agente",
-      "hotkeyDescription": "Tecla de atalho para alternar a sobreposição do agente",
+      "hotkey": "Atalho do agente de chat",
+      "hotkeyDescription": "Abre e fecha a sobreposição do agente de chat",
       "model": "Modelo do Agente",
       "modelDescription": "Modelo de IA usado para conversas do agente",
       "systemPrompt": "Prompt do Sistema",

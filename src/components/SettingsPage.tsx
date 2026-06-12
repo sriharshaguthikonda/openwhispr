@@ -951,7 +951,7 @@ export default function SettingsPage({
     [dictationKey, chatAgentKey, voiceAgentKey, t]
   );
 
-  const validateAgentHotkey = useCallback(
+  const validateChatAgentHotkey = useCallback(
     (hotkey: string) =>
       validateHotkeyForSlot(
         hotkey,
@@ -3243,6 +3243,24 @@ EOF`,
               </SettingsPanel>
             </div>
 
+            {/* Voice Agent Hotkey */}
+            <div>
+              <SectionHeader
+                title={t("settingsPage.general.voiceAgentHotkey.title")}
+                description={t("settingsPage.general.voiceAgentHotkey.description")}
+              />
+              <SettingsPanel>
+                <SettingsPanelRow>
+                  <HotkeyInput
+                    value={voiceAgentKey}
+                    onChange={setVoiceAgentKey}
+                    onClear={() => setVoiceAgentKey("")}
+                    validate={validateVoiceAgentHotkey}
+                  />
+                </SettingsPanelRow>
+              </SettingsPanel>
+            </div>
+
             {/* Meeting Mode Hotkey */}
             <div>
               <SectionHeader
@@ -3296,7 +3314,7 @@ EOF`,
               </SettingsPanel>
             </div>
 
-            {/* Agent Hotkey */}
+            {/* Chat Agent Hotkey */}
             <div>
               <SectionHeader
                 title={t("agentMode.settings.hotkey")}
@@ -3308,25 +3326,7 @@ EOF`,
                     value={chatAgentKey}
                     onChange={setChatAgentKey}
                     onClear={() => setChatAgentKey("")}
-                    validate={validateAgentHotkey}
-                  />
-                </SettingsPanelRow>
-              </SettingsPanel>
-            </div>
-
-            {/* Voice Agent Hotkey */}
-            <div>
-              <SectionHeader
-                title={t("settingsPage.general.voiceAgentHotkey.title")}
-                description={t("settingsPage.general.voiceAgentHotkey.description")}
-              />
-              <SettingsPanel>
-                <SettingsPanelRow>
-                  <HotkeyInput
-                    value={voiceAgentKey}
-                    onChange={setVoiceAgentKey}
-                    onClear={() => setVoiceAgentKey("")}
-                    validate={validateVoiceAgentHotkey}
+                    validate={validateChatAgentHotkey}
                   />
                 </SettingsPanelRow>
               </SettingsPanel>
