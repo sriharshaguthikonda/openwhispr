@@ -114,6 +114,10 @@ class MediaPlayer {
     return Math.max(0, Math.min(100, Math.round(parsed)));
   }
 
+  _compactProcessOutput(output) {
+    return (output || "").toString().trim().replace(/\s+/g, " ").slice(0, 600) || undefined;
+  }
+
   pauseMedia() {
     if (this._shouldDuckAudio()) {
       return this.duckAudio();
@@ -246,37 +250,61 @@ Add-Type -TypeDefinition @"
 using System;
 using System.Runtime.InteropServices;
 
-[Guid("BCDE0395-E52F-467C-8E3D-C4579291692E"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+public enum EDataFlow {
+  eRender = 0,
+  eCapture = 1,
+  eAll = 2
+}
+
+public enum ERole {
+  eConsole = 0,
+  eMultimedia = 1,
+  eCommunications = 2
+}
+
+[Flags]
+public enum CLSCTX : uint {
+  INPROC_SERVER = 0x1,
+  INPROC_HANDLER = 0x2,
+  LOCAL_SERVER = 0x4,
+  REMOTE_SERVER = 0x10,
+  ALL = INPROC_SERVER | INPROC_HANDLER | LOCAL_SERVER | REMOTE_SERVER
+}
+
+[Guid("A95664D2-9614-4F35-A746-DE8DB63617E6"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 interface IMMDeviceEnumerator {
-  int NotImpl1();
-  int GetDefaultAudioEndpoint(int dataFlow, int role, out IMMDevice ppDevice);
+  [PreserveSig] int EnumAudioEndpoints(EDataFlow dataFlow, uint dwStateMask, IntPtr ppDevices);
+  [PreserveSig] int GetDefaultAudioEndpoint(EDataFlow dataFlow, ERole role, out IMMDevice ppDevice);
+  [PreserveSig] int GetDevice(string pwstrId, out IMMDevice ppDevice);
+  [PreserveSig] int RegisterEndpointNotificationCallback(IntPtr pClient);
+  [PreserveSig] int UnregisterEndpointNotificationCallback(IntPtr pClient);
 }
 
 [Guid("D666063F-1587-4E43-81F1-B948E807363F"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 interface IMMDevice {
-  int Activate(ref Guid iid, int dwClsCtx, IntPtr pActivationParams, out IAudioEndpointVolume ppInterface);
+  [PreserveSig] int Activate(ref Guid iid, CLSCTX dwClsCtx, IntPtr pActivationParams, out IAudioEndpointVolume ppInterface);
 }
 
 [Guid("5CDF2C82-841E-4546-9722-0CF74078229A"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
 interface IAudioEndpointVolume {
-  int RegisterControlChangeNotify(IntPtr pNotify);
-  int UnregisterControlChangeNotify(IntPtr pNotify);
-  int GetChannelCount(out uint pnChannelCount);
-  int SetMasterVolumeLevel(float fLevelDB, Guid pguidEventContext);
-  int SetMasterVolumeLevelScalar(float fLevel, Guid pguidEventContext);
-  int GetMasterVolumeLevel(out float pfLevelDB);
-  int GetMasterVolumeLevelScalar(out float pfLevel);
-  int SetChannelVolumeLevel(uint nChannel, float fLevelDB, Guid pguidEventContext);
-  int SetChannelVolumeLevelScalar(uint nChannel, float fLevel, Guid pguidEventContext);
-  int GetChannelVolumeLevel(uint nChannel, out float pfLevelDB);
-  int GetChannelVolumeLevelScalar(uint nChannel, out float pfLevel);
-  int SetMute(bool bMute, Guid pguidEventContext);
-  int GetMute(out bool pbMute);
-  int GetVolumeStepInfo(out uint pnStep, out uint pnStepCount);
-  int VolumeStepUp(Guid pguidEventContext);
-  int VolumeStepDown(Guid pguidEventContext);
-  int QueryHardwareSupport(out uint pdwHardwareSupportMask);
-  int GetVolumeRange(out float pflVolumeMindB, out float pflVolumeMaxdB, out float pflVolumeIncrementdB);
+  [PreserveSig] int RegisterControlChangeNotify(IntPtr pNotify);
+  [PreserveSig] int UnregisterControlChangeNotify(IntPtr pNotify);
+  [PreserveSig] int GetChannelCount(out uint pnChannelCount);
+  [PreserveSig] int SetMasterVolumeLevel(float fLevelDB, Guid pguidEventContext);
+  [PreserveSig] int SetMasterVolumeLevelScalar(float fLevel, Guid pguidEventContext);
+  [PreserveSig] int GetMasterVolumeLevel(out float pfLevelDB);
+  [PreserveSig] int GetMasterVolumeLevelScalar(out float pfLevel);
+  [PreserveSig] int SetChannelVolumeLevel(uint nChannel, float fLevelDB, Guid pguidEventContext);
+  [PreserveSig] int SetChannelVolumeLevelScalar(uint nChannel, float fLevel, Guid pguidEventContext);
+  [PreserveSig] int GetChannelVolumeLevel(uint nChannel, out float pfLevelDB);
+  [PreserveSig] int GetChannelVolumeLevelScalar(uint nChannel, out float pfLevel);
+  [PreserveSig] int SetMute([MarshalAs(UnmanagedType.Bool)] bool bMute, Guid pguidEventContext);
+  [PreserveSig] int GetMute(out bool pbMute);
+  [PreserveSig] int GetVolumeStepInfo(out uint pnStep, out uint pnStepCount);
+  [PreserveSig] int VolumeStepUp(Guid pguidEventContext);
+  [PreserveSig] int VolumeStepDown(Guid pguidEventContext);
+  [PreserveSig] int QueryHardwareSupport(out uint pdwHardwareSupportMask);
+  [PreserveSig] int GetVolumeRange(out float pflVolumeMindB, out float pflVolumeMaxdB, out float pflVolumeIncrementdB);
 }
 
 [ComImport, Guid("BCDE0395-E52F-467C-8E3D-C4579291692E")]
@@ -286,23 +314,27 @@ public class AudioEndpoint {
   static IAudioEndpointVolume Endpoint() {
     var enumerator = (IMMDeviceEnumerator)(new MMDeviceEnumeratorComObject());
     IMMDevice device;
-    Marshal.ThrowExceptionForHR(enumerator.GetDefaultAudioEndpoint(0, 1, out device));
+    int hr = enumerator.GetDefaultAudioEndpoint(EDataFlow.eRender, ERole.eMultimedia, out device);
+    Marshal.ThrowExceptionForHR(hr);
     Guid iid = typeof(IAudioEndpointVolume).GUID;
     IAudioEndpointVolume endpoint;
-    Marshal.ThrowExceptionForHR(device.Activate(ref iid, 23, IntPtr.Zero, out endpoint));
+    hr = device.Activate(ref iid, CLSCTX.ALL, IntPtr.Zero, out endpoint);
+    Marshal.ThrowExceptionForHR(hr);
     return endpoint;
   }
 
   public static float GetVolume() {
     float value;
-    Marshal.ThrowExceptionForHR(Endpoint().GetMasterVolumeLevelScalar(out value));
+    int hr = Endpoint().GetMasterVolumeLevelScalar(out value);
+    Marshal.ThrowExceptionForHR(hr);
     return value * 100.0f;
   }
 
   public static void SetVolume(float percent) {
     percent = Math.Max(0.0f, Math.Min(100.0f, percent));
     Guid g = Guid.Empty;
-    Marshal.ThrowExceptionForHR(Endpoint().SetMasterVolumeLevelScalar(percent / 100.0f, g));
+    int hr = Endpoint().SetMasterVolumeLevelScalar(percent / 100.0f, g);
+    Marshal.ThrowExceptionForHR(hr);
   }
 }
 "@
@@ -312,8 +344,8 @@ public class AudioEndpoint {
   _runWindowsVolumePowerShell(command) {
     return spawnSync(
       "powershell",
-      ["-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-Command", command],
-      { stdio: "pipe", timeout: 5000, windowsHide: true }
+      ["-Sta", "-NoProfile", "-NonInteractive", "-ExecutionPolicy", "Bypass", "-Command", command],
+      { stdio: "pipe", timeout: 7000, windowsHide: true }
     );
   }
 
@@ -321,16 +353,60 @@ public class AudioEndpoint {
     const result = this._runWindowsVolumePowerShell(
       `${this._windowsVolumeScript()}\n[AudioEndpoint]::GetVolume()`
     );
-    if (result.status !== 0) return null;
-    const parsed = Number((result.stdout?.toString() || "").trim());
-    return Number.isFinite(parsed) ? this._clampVolume(parsed) : null;
+    const stdout = (result.stdout?.toString() || "").trim();
+    const stderr = (result.stderr?.toString() || "").trim();
+
+    if (result.status !== 0) {
+      debugLogger.warn(
+        "Windows volume read failed",
+        {
+          status: result.status,
+          signal: result.signal,
+          stdout: this._compactProcessOutput(stdout),
+          stderr: this._compactProcessOutput(stderr),
+        },
+        "media"
+      );
+      return null;
+    }
+
+    const match = stdout.match(/-?\d+(?:\.\d+)?/);
+    const parsed = match ? Number(match[0]) : NaN;
+    if (!Number.isFinite(parsed)) {
+      debugLogger.warn(
+        "Windows volume read returned non-numeric output",
+        {
+          stdout: this._compactProcessOutput(stdout),
+          stderr: this._compactProcessOutput(stderr),
+        },
+        "media"
+      );
+      return null;
+    }
+
+    return this._clampVolume(parsed);
   }
 
   _setWindowsVolumePercent(percent) {
+    const target = this._clampVolume(percent);
     const result = this._runWindowsVolumePowerShell(
-      `${this._windowsVolumeScript()}\n[AudioEndpoint]::SetVolume(${this._clampVolume(percent)})`
+      `${this._windowsVolumeScript()}\n[AudioEndpoint]::SetVolume(${target})`
     );
-    return result.status === 0;
+    if (result.status !== 0) {
+      debugLogger.warn(
+        "Windows volume set failed",
+        {
+          target,
+          status: result.status,
+          signal: result.signal,
+          stdout: this._compactProcessOutput(result.stdout),
+          stderr: this._compactProcessOutput(result.stderr),
+        },
+        "media"
+      );
+      return false;
+    }
+    return true;
   }
 
   _getMacVolumePercent() {
